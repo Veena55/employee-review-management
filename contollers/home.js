@@ -1,8 +1,12 @@
 const Registeration = require('../models/review_requests');
+const User = require('../models/users');
 
-module.exports.dashboard = (req,res) => {
+module.exports.dashboard = async(req,res) => {
+    const Employees = await User.find();
+    console.log(Employees);
     return res.render('dashboard',{
-        title : "Admin | Dashboard"
+        title : "Admin | Dashboard",
+        employees : Employees
     });
 }
 module.exports.enrolledEmployees = (req,res) => {
@@ -27,8 +31,8 @@ module.exports.registerForFeedback = (req,res) => {
 }
 
 module.exports.registerFeedbackRequest = async(req,res) =>{
-    // const Register = await Registeration.create({
-    //     emp : req.body.empId, msg : req.body.msg, avatar : req.file
-    // });
-    return res.redirect('back');
+    const Register = await Registeration.create({
+        emp : req.body.emp, msg : req.body.msg, avatar : req.file.filename
+    });
+    return res.redirect('/users/feedback-form');
 }

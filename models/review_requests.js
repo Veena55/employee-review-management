@@ -13,7 +13,7 @@ const reviewRequestSchema = new mongoose.Schema({
         type : String
     },
 
-    avtar : {
+    avatar : {
         type : String
     }
 },
