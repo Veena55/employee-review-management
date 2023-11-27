@@ -11,7 +11,7 @@
         <div class="bg-[#f8fafb] rounded-xl p-2">
             <div class="flex justify-between p-2">
                 <div>
-                    <div class="w-4 h-4 border border-gray-400 rounded-sm bg-white shadow-lg"></div>
+                    <div class="invisible w-4 h-4 border border-gray-400 rounded-sm bg-white shadow-lg"></div>
                 </div>
                 <div>
                     <img src="/img/logo.png" class="mx-auto w-20 h-20 rounded-full object-top bg-pink-100 p-2"  alt="employee-name">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div>
-                    <button class="px-2 py-1 rounded-lg border border-black">Add</button>
+                    <a class="px-2 py-1 rounded-lg border border-black" href="/users/assign-employees/<%= employees[employee]._id %>">Add</a>
                     <!-- <i class="fa-solid fa-ellipsis text-lg"></i> -->
                 </div>
             </div>

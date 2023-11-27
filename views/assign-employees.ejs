@@ -1,0 +1,30 @@
+<div class="flex md:h-screen justify-center items-center bg-[#37474F]">
+    <div
+        class="grid grid-cols-1 lg:grid-cols-2 px-5 place-content-center items-center shadow-black-400 shadow-2xl rounded-2xl max-w-3xl mx-auto bg-white">
+        <div>
+            <div class="mb-5">
+                <img src="/img/logo.png" class="mx-auto" alt="habit-tracker-logo" width="80" height="80">
+            </div>
+            <div class="px-5">
+                <form action="/users/assign-employees" method="POST">
+                    <div class="mb-3">
+                        <input type="text" class="p-2 w-full rounded-lg border border-[#37474f50]" name="emp" value="<%= employee._id %>">
+                    </div>
+                    <div class="mb-3">
+                        <select class="w-full rounded-lg border border-[#37474f50]" name="employeeList" multiple>
+                        <% for(employee in employees) { %>
+                            <option value="<%= employees[employee]._id %>"><%= employees[employee].username %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="mt-8">
+                        <input type="submit" class="p-2 w-full rounded-lg text-white bg-[#37474F] text-center font-medium shadow-xl shadow-[#3a3a3a7c]" value="Assign">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="border-r p-5 mr-5">
+            <img src="/img/home-page.svg" class="w-full h-96 scale-110" alt="habit-tracker">
+        </div>
+    </div>
+</div>
