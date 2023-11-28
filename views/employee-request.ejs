@@ -6,7 +6,7 @@
         <nav>
             <a href="/users/dashboard" class="bg-[#37474F]  text-white  rounded-lg p-2 text-lg tracking-wide">All Employees</a>
             <a href="/users/all-reviews" class="bg-[#37474F]  text-white  rounded-lg p-2 text-lg tracking-wide">Feedbacks</a>
-            <a href="/users/employee-request" class="bg-[#37474F]  text-white  rounded-lg p-2 text-lg tracking-wide">Approve Request</a>
+            <a href="/users/employee-requests" class="bg-[#37474F]  text-white  rounded-lg p-2 text-lg tracking-wide">Approve Request</a>
         </nav>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-around gap-8 max-w-5xl mx-auto py-10">
@@ -55,6 +55,7 @@
         </div>
        <% } %>           
     </div>
+    <% }else { %> 
     <p class="text-center font-bold text-2xl">No Requests Found</p>
  <%  }  %>
 </div>
