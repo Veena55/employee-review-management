@@ -9,8 +9,8 @@ const customMiddleware = require('./config/middleware');
 // //Import the main Passport and Express-Session library
 const passport = require('passport');
 const session = require('express-session');
-
 const passportLocalStrategy = require('./config/passport-local-strategy');
+const MongoStore = require('connect-mongodb-session')(session);
 
 // setup layout for view
 const expressLayout = require('express-ejs-layouts');
@@ -23,9 +23,17 @@ app.set('views','./views');
 
 // initialize the middleare for passport js to maintain session or attach authentocated user to req.session
 app.use(session({
+    name : "employee-review-management",
     secret : "employee-review-management-data",
     resave : false,
-    saveUninitialized : false
+    saveUninitialized : false,
+    cookie : {
+        maxAge : (1000*60*100)
+    },
+    store : new MongoStore({
+        uri : 'mongodb://0.0.0.0:27017/review_management',
+        collection: 'mySessions'
+    })
 }))
 // This is the basic express session({..}) initialization.
 app.use(flash());

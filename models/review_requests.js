@@ -15,6 +15,9 @@ const reviewRequestSchema = new mongoose.Schema({
 
     avatar : {
         type : String
+    }, 
+    status : {
+        type : String
     }
 },
 {timestamps : true}

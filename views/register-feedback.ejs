@@ -5,7 +5,7 @@
         </div>
         <form action="/users/register-review-request" enctype="multipart/form-data" method="post">
             <div class="mb-5">
-                <input type="text" class="p-2 w-full rounded-lg border border-[#37474f50]" name="emp" value="<%= locals.user.id %>">
+                <input type="text" class="p-2 w-full rounded-lg border border-[#37474f50] hidden" name="emp" value="<%= locals.user.id %>">
             </div>
             <div class="mb-3">
                 <textarea class="p-2 w-full rounded-lg border border-[#37474f50]" rows="5" placeholder="Write a review..." name="msg"></textarea>

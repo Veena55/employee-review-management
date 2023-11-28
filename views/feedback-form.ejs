@@ -7,18 +7,20 @@
         <div class="py-5">
             <p class="text-xl"><i class="fa-regular fa-comment-dots mr-1"></i>Feedback Form</p>
         </div>
-        <form>
+        <form action="/users/save-review" method="post">
             <div class="mb-5">
-                <select name="" id="" class="p-2 w-full rounded-lg border border-[#37474f50]">
-                    <option value="">Employee Name</option>
-                    <option value="">Employee Name</option>
-                    <option value="">Employee Name</option>
-                    <option value="">Employee Name</option>
+                <input type="text" name="givenby" class="p-2 w-full rounded-lg border border-[#37474f50] hidden" value="<%= locals.user.id %>">
+            </div>
+            <div class="mb-5">
+                <select name="givento" class="p-2 w-full rounded-lg border border-[#37474f50]">
+                    <% for(employee in employeeList){ %>
+                    <option value="<%= employeeList[employee].emp._id %>"><%= employeeList[employee].emp.username %></option>
+                    <% } %> 
                 </select>
                 <!-- <input type="email" class="p-2 w-full rounded-lg border border-[#37474f50]" placeholder="Employee Id"> -->
             </div>
             <div class="mb-3">
-                <textarea class="p-2 w-full rounded-lg border border-[#37474f50]" rows="5" placeholder="Write a review..."></textarea>
+                <textarea name="feedback" class="p-2 w-full rounded-lg border border-[#37474f50]" rows="5" placeholder="Write a review..."></textarea>
             </div>
             <div class="mt-5">
                 <input type="submit" class="p-2 rounded-lg text-white bg-[#37474F] text-center font-medium shadow-lg shadow-[#3a3a3a7c]" value="Submit Feedback">

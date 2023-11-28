@@ -10,29 +10,26 @@
         </nav>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-around gap-8 max-w-5xl mx-auto py-10">
-        <% for (let employee in employees) { %>
+        <% if(employeeList) { %>
+        <% for (let employee of employeeList) { %>
         <div class="bg-[#f8fafb] rounded-xl p-2">
-            <div class="flex justify-between p-2">
+            <div class="flex justify-center p-2">
                 <div>
                     <div class="invisible w-4 h-4 border border-gray-400 rounded-sm bg-white shadow-lg"></div>
                 </div>
                 <div>
                     <img src="/img/logo.png" class="mx-auto w-20 h-20 rounded-full object-top bg-pink-100 p-2"  alt="employee-name">
                     <div class="font-medium text-center">
-                        <p><%= employees[employee].username %></p>
+                        <p><%= employee.emp.username %></p>
                         <p class="text-gray-500 font-normal">Project Manager</p>
                     </div>
-                </div>
-                <div>
-                    <a class="px-2 py-1 rounded-lg border border-black" href="/users/assign-employees/<%= employees[employee]._id %>">Add</a>
-                    <!-- <i class="fa-solid fa-ellipsis text-lg"></i> -->
                 </div>
             </div>
             <div class="bg-white rounded-xl my-2 px-3 mx-3">
                 <div class="flex justify-between items-center">
                     <div class="font-medium p-2">
                         <p class="text-gray-500 font-normal">Employee ID</p>
-                        <p>ID: <%= employees[employee].empid %></p>
+                        <p>ID: <%= employee.emp.empid %></p>
                     </div>
                     <div class="font-medium p-2">
                         <p class="text-gray-500 font-normal">Department</p>
@@ -46,8 +43,18 @@
                 <div class="font-medium pb-3 px-2">
                     <p><i class="fa-solid fa-phone-volume mr-1"></i> <span class="text-gray-500 font-normal">989785465</span></p>
                 </div>
+                <div class="text-center pt-3 pb-5">
+                    <% if(employee.status == 'Approved'){ %> 
+                    <p class="px-2 py-1 rounded-lg border border-yellow-200 bg-yellow-400 inline-block">Approved</p>
+                    <% } else{ %> 
+                    <a class="px-2 py-1 rounded-lg border border-green-400 bg-green-200 " href="/users/approve-employees/<%= employee.emp._id %>">Approve</a>
+                    <% } %> 
+                    <a class="px-2 py-1 rounded-lg border border-red-600 bg-red-500 text-white" href="/users/reject-request/<%= employee.emp._id %>">Reject</a>
+                </div>                
             </div>
         </div>
-       <% } %>
+       <% } %>           
     </div>
+    <p class="text-center font-bold text-2xl">No Requests Found</p>
+ <%  }  %>
 </div>

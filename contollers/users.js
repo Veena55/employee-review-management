@@ -16,12 +16,10 @@ module.exports.sign_up = function (req,res) {
 }
 
 module.exports.create = async (req,res) => {
-    // console.log(req.body);
     try {
         let user = await User.findOne({empid: req.body.empId});     
          if(!user) {
-            const result = await User.create({empid : req.body.empId , username : req.body.username, password : req.body.password});
-            // console.log(result);
+            const result = await User.create({empid : req.body.empId , username : req.body.username, password : req.body.password, role:req.body.role});
             return res.redirect('/users/sign-in');
     } else {
         console.log("Already Exists");
@@ -35,6 +33,11 @@ module.exports.create = async (req,res) => {
 
 
 module.exports.createSession = (req,res)=>{
+    console.log(req.user.role);
     req.flash('success','Logged in Successfully');
-    return res.redirect('/users/feedback-form',);
+    if(req.user.role == 'Admin') {
+        return res.redirect('/users/dashboard');
+    } else {
+        return res.redirect('/users/feedback-form');
+    }
 }
